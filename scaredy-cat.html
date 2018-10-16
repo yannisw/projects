@@ -1,83 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="heading">
-  <h1>Scaredy Cat</h1>
- 
-</div>
+  <div class="heading">
+    <h1>Scaredy Cat</h1>
+
+  </div>
+  <div class="scoreboard">
+    <p id="score">0</p>
+  </div>
   <div class="keys">
-    <div> 
+    <div>
       <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
-    <div data-key="65" class="key">
-      
-      <kbd>A</kbd>
-      <span class="sound">clap</span>
+      <div data-key="65" class="key">
+
+        <kbd>A</kbd>
+        <span class="sound">clap</span>
+      </div>
     </div>
-    </div>
-    <div> 
+    <div>
       <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
       <div data-key="83" class="key">
         <kbd>S</kbd>
         <span class="sound">hihat</span>
       </div>
-  </div>
-  <div> 
-    <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
-    <div data-key="68" class="key">
-      <kbd>D</kbd>
-      <span class="sound">kick</span>
     </div>
-  </div>
-  <div> 
-    <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
-    <div data-key="70" class="key">
-      <kbd>F</kbd>
-      <span class="sound">openhat</span>
+    <div>
+      <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
+      <div data-key="68" class="key">
+        <kbd>D</kbd>
+        <span class="sound">kick</span>
+      </div>
     </div>
-  </div>
-  <div>   
-    <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
-    <div data-key="71" class="key">
-      
-      <kbd>G</kbd>
-      <span class="sound">boom</span>
+    <div>
+      <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
+      <div data-key="70" class="key">
+        <kbd>F</kbd>
+        <span class="sound">openhat</span>
+      </div>
     </div>
-  </div>
-  <div>   
-    <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
-    <div data-key="72" class="key">
-      <kbd>H</kbd>
-      <span class="sound">ride</span>
+    <div>
+      <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
+      <div data-key="71" class="key">
+
+        <kbd>G</kbd>
+        <span class="sound">boom</span>
+      </div>
     </div>
-  </div>
-  <div>   
-    <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
-    <div data-key="74" class="key">
-      <kbd>J</kbd>
-      <span class="sound">snare</span>
+    <div>
+      <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
+      <div data-key="72" class="key">
+        <kbd>H</kbd>
+        <span class="sound">ride</span>
+      </div>
     </div>
-  </div>
-  <div>   
-    <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
-    <div data-key="75" class="key">
-      <kbd>K</kbd>
-      <span class="sound">tom</span>
+    <div>
+      <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
+      <div data-key="74" class="key">
+        <kbd>J</kbd>
+        <span class="sound">snare</span>
+      </div>
     </div>
-  </div>
-  <div>  
-  <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat"> 
-    <div data-key="76" class="key">
-      <kbd>L</kbd>
-      <span class="sound">tink</span>
+    <div>
+      <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
+      <div data-key="75" class="key">
+        <kbd>K</kbd>
+        <span class="sound">tom</span>
+      </div>
     </div>
-  </div>  
+    <div>
+      <img class="cat cat-hidden" src="https://ubisafe.org/images/transparent-gifs-cat-3.gif" alt="cat">
+      <div data-key="76" class="key">
+        <kbd>L</kbd>
+        <span class="sound">tink</span>
+      </div>
+    </div>
   </div>
 
   <audio data-key="65" src="sounds/clap.wav"></audio>
@@ -90,61 +95,84 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
-  
-  let catEvent = {
-    counter: 0,
+  <script>
 
-    createCat: function() {
-      let keys = [65,83,68,70,71,72,74,75,76];
-      let ranPos = Math.floor(Math.random() * 8 + 0.5);
-      
-      let cat = document.querySelector(`.key[data-key="${keys[ranPos]}"]`).previousElementSibling;
-      cat.classList.remove("cat-hidden");
-      
+    let catEvent = {
+      counter: 0,
+      hasCat: [],
+      createCat: function () {
+        let keys = [65, 83, 68, 70, 71, 72, 74, 75, 76];
+        let ranPos = Math.floor(Math.random() * 8 + 0.5);
+        let cat = document.querySelector(`.key[data-key="${keys[ranPos]}"]`).previousElementSibling;
+        cat.classList.remove("cat-hidden");
+        if (this.hasCat.indexOf(keys[ranPos]) === -1) {
+          this.hasCat.push(keys[ranPos]);
+        }
+
+      }
+
+    };
+
+
+
+
+
+    function playSound(e) {
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+      const cat = document.querySelector(`.key[data-key="${e.keyCode}"]`).previousElementSibling;
+      if (!audio) return;
+
+
+
+
+      audio.currentTime = 0;
+      audio.play();
+      key.classList.add("playing");
+
+      cat.classList.add("cat-hidden");
+
+      if (!(catEvent.hasCat.indexOf(e.keyCode) === -1)) {
+        catEvent.counter += 1;
+
+        catEvent.hasCat.splice(catEvent.hasCat.indexOf(e.keyCode), 1);
+        let score = document.getElementById("score");
+        score.innerHTML = "";
+        score.textContent = catEvent.counter;
+      } else if (catEvent.counter > 0) {
+        catEvent.counter -= 5;
+        if (catEvent.counter < 0) {
+          catEvent.counter = 0;
+        }
+        let score = document.getElementById("score");
+        score.innerHTML = "";
+        score.textContent = catEvent.counter;
+      }
+
+
+      setTimeout(function () { catEvent.createCat() }, 500);
+
     }
 
-  };
+    function removeTransition(e) {
 
-  
+      if (e.propertyName !== "transform") return;
 
+      this.classList.remove("playing");
+    }
 
-  
-  function playSound(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    const cat = document.querySelector(`.key[data-key="${e.keyCode}"]`).previousElementSibling;
-    if (!audio) return;
-
-    
-    catEvent.createCat();
-
-    audio.currentTime = 0;
-    audio.play();
-    key.classList.add("playing");
-    
-    cat.classList.add("cat-hidden");
-
-  }
-
-function removeTransition(e) {
-  
-  if (e.propertyName !== "transform") return;
-  
-  this.classList.remove("playing");
-}
-
-const keys = document.querySelectorAll(".key");
-keys.forEach(key => key.addEventListener("transitionend", removeTransition));
-window.addEventListener("keydown", playSound);
+    const keys = document.querySelectorAll(".key");
+    keys.forEach(key => key.addEventListener("transitionend", removeTransition));
+    window.addEventListener("keydown", playSound);
 
 
 
 
 
 
-</script>
+  </script>
 
 
 </body>
+
 </html>

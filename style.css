@@ -1,27 +1,40 @@
 html {
   font-size: 10px;
   background: url(http://kevart.net/data/out/35/900822.jpg) bottom center;
-
+  background-color: #c6b8c7;
   background-size: cover;
 }
-body,html {
+body,
+html {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
 
-.heading h1{
-  font-family: 'Amatic SC', cursive;
+.heading h1 {
+  font-family: "Amatic SC", cursive;
   font-size: 100px;
-  text-align:   center; 
-  color: #8b68c6;
-  text-shadow: 2px 1px 10px #319cba;
+  text-align: center;
+  color: #562c9c;
+  text-shadow: 2px 1px 10px #c0aee1;
+}
+
+.scoreboard {
+  background: #562c9c;
+  color: #ffc600;
+  border-radius: 50%;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding: 0px 10px;
+  font-size: 16px;
+  line-height: 0;
 }
 
 .cat {
-  width:100px;
-  position:absolute ;
-  z-index:  -1;
+  width: 100px;
+  position: absolute;
+  z-index: -1;
   visibility: visible;
 }
 
@@ -33,23 +46,23 @@ body,html {
   display: flex;
   flex: 1;
   min-height: 80vh;
-  
+
   justify-content: center;
-  position:relative ;
+  position: relative;
 }
 
 .key {
-  border: .4rem solid #8b68c6;
-  border-radius: .5rem;
+  border: 0.4rem solid #562c9c;
+  border-radius: 0.5rem;
   margin: 1rem;
   font-size: 1.5rem;
-  padding: 1rem .5rem;
-  transition: all .07s ease;
+  padding: 1rem 0.5rem;
+  transition: all 0.07s ease;
   width: 10rem;
   text-align: center;
   color: white;
-  background: rgba(142,92,183,0.4);
-  text-shadow: 0 0 .5rem black;
+  background: rgba(157, 150, 198, 0.32);
+  text-shadow: 0 0 0.5rem black;
 }
 
 .playing {
@@ -66,6 +79,6 @@ kbd {
 .sound {
   font-size: 1.2rem;
   text-transform: uppercase;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   color: #ffc600;
 }
