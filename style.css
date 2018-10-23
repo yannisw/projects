@@ -29,6 +29,15 @@ html {
   margin: 0 10%;
 }
 
+.navbar a.brand {
+  font-family: "Amatic SC", cursive;
+  color: white;
+  text-shadow: 1px 1px 1px #ffc600;
+  float: left;
+  font-size: 24px;
+  padding: 5px;
+}
+
 .navbar a {
   text-decoration: none;
   display: block;
