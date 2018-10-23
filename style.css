@@ -19,16 +19,44 @@ html {
   text-shadow: 2px 1px 10px #c0aee1;
 }
 
-.scoreboard {
-  background: #562c9c;
+.navbar {
+  background-color: #562c9c;
+  width: 100%;
+  position: relative;
+}
+
+.nav-container {
+  margin: 0 10%;
+}
+
+.navbar a {
+  text-decoration: none;
+  display: block;
+  padding: 14px 12px;
+  color: white;
+}
+
+.r-navtabs {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  overflow: hidden;
+}
+
+.r-navtabs li {
+  float: right;
+}
+
+a.scoreboard {
+  background: #4d2194;
   color: #ffc600;
   border-radius: 50%;
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  padding: 0px 10px;
   font-size: 16px;
   line-height: 0;
+  float: right;
+  top: 7px;
+  right: 5px;
+  position: absolute;
 }
 
 .cat {
